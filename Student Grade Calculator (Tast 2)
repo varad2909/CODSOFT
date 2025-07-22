@@ -1,0 +1,81 @@
+/*
+                    Task 2 STUDENT GRADE CALCULATOR
+Input: Take marks obtained (out of 100) in each subject.
+Calculate Total Marks: Sum up the marks obtained in all subjects.
+Calculate Average Percentage: Divide the total marks by the total number of subjects to get the
+average percentage.
+Grade Calculation: Assign grades based on the average percentage achieved.
+Display Results: Show the total marks, average percentage, and the corresponding grade to the user. */
+
+package studentgradecalculator;
+
+import java.util.Scanner;
+
+public class Studentgradecalculator
+{
+
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\n----------- STUDENT GRADE CALCULATOR MENU -----------");
+        System.out.print("Enter total number of subjects: ");
+        int numSubjects = sc.nextInt();
+
+        int[] marks = new int[numSubjects];
+        int totalMarks = 0;
+
+        
+        for (int i = 0; i < numSubjects; i++) 
+        {
+            System.out.print("Enter marks for subject " + (i + 1) + " (out of 100): ");
+            marks[i] = sc.nextInt();
+
+            if (marks[i] < 0 || marks[i] > 100)
+            {
+                System.out.println("Invalid input! Marks must be between 0 and 100.");
+                i--; 
+                continue;
+            }
+                totalMarks += marks[i];
+        }
+
+       
+        double average = (double) totalMarks / numSubjects;
+
+     
+        String grade;
+        if (average >= 90) 
+        {
+            grade = "o";
+        } else if (average >= 80) 
+        {
+            grade = "A+";
+        } else if (average >= 70) 
+        {
+            grade = "A";
+        } else if (average >= 60)
+        {
+            grade = "B+";
+        } else if (average >= 50)
+        {
+            grade = "B";
+        }else if (average >= 40) 
+        {
+            grade = "C";
+        }else if (average >= 30) 
+        {
+            grade = "C+";
+        }
+        else
+        {
+            grade = "F";
+        }
+
+        
+        System.out.println("\n------ Result ------");
+        System.out.println("Total Marks = " + totalMarks);
+        System.out.printf("Average Percentage = %.2f%%\n", average);
+        System.out.println("Grade = " + grade);
+    }
+}
